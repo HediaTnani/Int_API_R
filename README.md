@@ -35,7 +35,7 @@ response
 ```
 
     Response [https://rest.ensembl.org/regulatory/species/homo_sapiens/microarray]
-      Date: 2023-03-16 14:44
+      Date: 2023-03-16 20:41
       Status: 200
       Content-Type: application/json
       Size: 3.46 kB
@@ -48,78 +48,78 @@ library(jsonlite)
 fromJSON(content(response,as = "text", encoding = "UTF-8" ))
 ```
 
-        type      format                    array   vendor
-    1  OLIGO  EXPRESSION                 OneArray  PHALANX
-    2  OLIGO  EXPRESSION                 CODELINK CODELINK
-    3  OLIGO  EXPRESSION             HumanWG_6_V3 ILLUMINA
-    4  OLIGO  EXPRESSION                  GPL6848  AGILENT
-    5  OLIGO METHYLATION      HumanMethylation450 ILLUMINA
-    6  OLIGO  EXPRESSION            HumanRef-8_V3 ILLUMINA
-    7  OLIGO  EXPRESSION              WholeGenome  AGILENT
-    8  OLIGO         CGH                  CGH_44b  AGILENT
-    9  OLIGO  EXPRESSION    SurePrint_G3_GE_8x60k  AGILENT
-    10 OLIGO  EXPRESSION                  HC-G110     AFFY
-    11 OLIGO  EXPRESSION SurePrint_G3_GE_8x60k_v2  AGILENT
-    12 OLIGO  EXPRESSION                 HG-Focus     AFFY
-    13 OLIGO  EXPRESSION     WholeGenome_4x44k_v1  AGILENT
-    14 OLIGO  EXPRESSION     WholeGenome_4x44k_v2  AGILENT
-    15 OLIGO  EXPRESSION                 GPL26966  AGILENT
-    16 OLIGO  EXPRESSION               HG-U133A_2     AFFY
-    17 OLIGO  EXPRESSION                 GPL19072  AGILENT
-    18 OLIGO METHYLATION       HumanMethylation27 ILLUMINA
-    19 OLIGO  EXPRESSION                 HG-U133B     AFFY
-    20 OLIGO  EXPRESSION                  HTA-2_0     AFFY
-    21 OLIGO  EXPRESSION           HG-U133_Plus_2     AFFY
-    22 OLIGO  EXPRESSION                HG_U95Av2     AFFY
-    23 OLIGO  EXPRESSION                  HG-U95B     AFFY
-    24 OLIGO  EXPRESSION                  HG-U95C     AFFY
-    25 OLIGO  EXPRESSION                  HG-U95D     AFFY
-    26 OLIGO  EXPRESSION                  HG-U95E     AFFY
-    27 OLIGO  EXPRESSION                  HG_U95A     AFFY
-    28 OLIGO  EXPRESSION                 HuGeneFL     AFFY
-    29 OLIGO  EXPRESSION                 U133_X3P     AFFY
-    30 OLIGO  EXPRESSION                PrimeView     AFFY
-    31 OLIGO  EXPRESSION       HT_HG-U133_Plus_PM     AFFY
-    32 OLIGO  EXPRESSION           HuEx-1_0-st-v2     AFFY
-    33 OLIGO  EXPRESSION         HuGene-2_0-st-v1     AFFY
-    34 OLIGO  EXPRESSION         HuGene-1_0-st-v1     AFFY
-    35 OLIGO  EXPRESSION         HuGene-2_1-st-v1     AFFY
-                         description
-    1                           <NA>
-    2                           <NA>
-    3                           <NA>
-    4                           <NA>
-    5                           <NA>
-    6                           <NA>
-    7                           <NA>
-    8                           <NA>
-    9                           <NA>
-    10                          <NA>
-    11                          <NA>
-    12                          <NA>
-    13                          <NA>
-    14                          <NA>
-    15                          <NA>
-    16                          <NA>
-    17                          <NA>
-    18                          <NA>
-    19                          <NA>
-    20 Human Transcriptome Array 2.0
-    21                          <NA>
-    22                          <NA>
-    23                          <NA>
-    24                          <NA>
-    25                          <NA>
-    26                          <NA>
-    27                          <NA>
-    28                          <NA>
-    29                          <NA>
-    30                          <NA>
-    31                          <NA>
-    32                          <NA>
-    33                          <NA>
-    34                          <NA>
-    35                          <NA>
+                         description   vendor  type      format
+    1                           <NA>  PHALANX OLIGO  EXPRESSION
+    2                           <NA> CODELINK OLIGO  EXPRESSION
+    3                           <NA> ILLUMINA OLIGO  EXPRESSION
+    4                           <NA>  AGILENT OLIGO  EXPRESSION
+    5                           <NA> ILLUMINA OLIGO METHYLATION
+    6                           <NA> ILLUMINA OLIGO  EXPRESSION
+    7                           <NA>  AGILENT OLIGO  EXPRESSION
+    8                           <NA>  AGILENT OLIGO         CGH
+    9                           <NA>  AGILENT OLIGO  EXPRESSION
+    10                          <NA>     AFFY OLIGO  EXPRESSION
+    11                          <NA>  AGILENT OLIGO  EXPRESSION
+    12                          <NA>     AFFY OLIGO  EXPRESSION
+    13                          <NA>  AGILENT OLIGO  EXPRESSION
+    14                          <NA>  AGILENT OLIGO  EXPRESSION
+    15                          <NA>  AGILENT OLIGO  EXPRESSION
+    16                          <NA>     AFFY OLIGO  EXPRESSION
+    17                          <NA>  AGILENT OLIGO  EXPRESSION
+    18                          <NA> ILLUMINA OLIGO METHYLATION
+    19                          <NA>     AFFY OLIGO  EXPRESSION
+    20 Human Transcriptome Array 2.0     AFFY OLIGO  EXPRESSION
+    21                          <NA>     AFFY OLIGO  EXPRESSION
+    22                          <NA>     AFFY OLIGO  EXPRESSION
+    23                          <NA>     AFFY OLIGO  EXPRESSION
+    24                          <NA>     AFFY OLIGO  EXPRESSION
+    25                          <NA>     AFFY OLIGO  EXPRESSION
+    26                          <NA>     AFFY OLIGO  EXPRESSION
+    27                          <NA>     AFFY OLIGO  EXPRESSION
+    28                          <NA>     AFFY OLIGO  EXPRESSION
+    29                          <NA>     AFFY OLIGO  EXPRESSION
+    30                          <NA>     AFFY OLIGO  EXPRESSION
+    31                          <NA>     AFFY OLIGO  EXPRESSION
+    32                          <NA>     AFFY OLIGO  EXPRESSION
+    33                          <NA>     AFFY OLIGO  EXPRESSION
+    34                          <NA>     AFFY OLIGO  EXPRESSION
+    35                          <NA>     AFFY OLIGO  EXPRESSION
+                          array
+    1                  OneArray
+    2                  CODELINK
+    3              HumanWG_6_V3
+    4                   GPL6848
+    5       HumanMethylation450
+    6             HumanRef-8_V3
+    7               WholeGenome
+    8                   CGH_44b
+    9     SurePrint_G3_GE_8x60k
+    10                  HC-G110
+    11 SurePrint_G3_GE_8x60k_v2
+    12                 HG-Focus
+    13     WholeGenome_4x44k_v1
+    14     WholeGenome_4x44k_v2
+    15                 GPL26966
+    16               HG-U133A_2
+    17                 GPL19072
+    18       HumanMethylation27
+    19                 HG-U133B
+    20                  HTA-2_0
+    21           HG-U133_Plus_2
+    22                HG_U95Av2
+    23                  HG-U95B
+    24                  HG-U95C
+    25                  HG-U95D
+    26                  HG-U95E
+    27                  HG_U95A
+    28                 HuGeneFL
+    29                 U133_X3P
+    30                PrimeView
+    31       HT_HG-U133_Plus_PM
+    32           HuEx-1_0-st-v2
+    33         HuGene-2_0-st-v1
+    34         HuGene-1_0-st-v1
+    35         HuGene-2_1-st-v1
 
 Then we saw how to make a function.
 
@@ -148,78 +148,78 @@ con <- "application/json"
 get_microarrays(baseURL, ext, con)
 ```
 
-                         description                    array  type      format
-    1                           <NA>                 OneArray OLIGO  EXPRESSION
-    2                           <NA>                 CODELINK OLIGO  EXPRESSION
-    3                           <NA>             HumanWG_6_V3 OLIGO  EXPRESSION
-    4                           <NA>                  GPL6848 OLIGO  EXPRESSION
-    5                           <NA>      HumanMethylation450 OLIGO METHYLATION
-    6                           <NA>            HumanRef-8_V3 OLIGO  EXPRESSION
-    7                           <NA>              WholeGenome OLIGO  EXPRESSION
-    8                           <NA>                  CGH_44b OLIGO         CGH
-    9                           <NA>    SurePrint_G3_GE_8x60k OLIGO  EXPRESSION
-    10                          <NA>                  HC-G110 OLIGO  EXPRESSION
-    11                          <NA> SurePrint_G3_GE_8x60k_v2 OLIGO  EXPRESSION
-    12                          <NA>                 HG-Focus OLIGO  EXPRESSION
-    13                          <NA>     WholeGenome_4x44k_v1 OLIGO  EXPRESSION
-    14                          <NA>     WholeGenome_4x44k_v2 OLIGO  EXPRESSION
-    15                          <NA>                 GPL26966 OLIGO  EXPRESSION
-    16                          <NA>               HG-U133A_2 OLIGO  EXPRESSION
-    17                          <NA>                 GPL19072 OLIGO  EXPRESSION
-    18                          <NA>       HumanMethylation27 OLIGO METHYLATION
-    19                          <NA>                 HG-U133B OLIGO  EXPRESSION
-    20 Human Transcriptome Array 2.0                  HTA-2_0 OLIGO  EXPRESSION
-    21                          <NA>           HG-U133_Plus_2 OLIGO  EXPRESSION
-    22                          <NA>                HG_U95Av2 OLIGO  EXPRESSION
-    23                          <NA>                  HG-U95B OLIGO  EXPRESSION
-    24                          <NA>                  HG-U95C OLIGO  EXPRESSION
-    25                          <NA>                  HG-U95D OLIGO  EXPRESSION
-    26                          <NA>                  HG-U95E OLIGO  EXPRESSION
-    27                          <NA>                  HG_U95A OLIGO  EXPRESSION
-    28                          <NA>                 HuGeneFL OLIGO  EXPRESSION
-    29                          <NA>                 U133_X3P OLIGO  EXPRESSION
-    30                          <NA>                PrimeView OLIGO  EXPRESSION
-    31                          <NA>       HT_HG-U133_Plus_PM OLIGO  EXPRESSION
-    32                          <NA>           HuEx-1_0-st-v2 OLIGO  EXPRESSION
-    33                          <NA>         HuGene-2_0-st-v1 OLIGO  EXPRESSION
-    34                          <NA>         HuGene-1_0-st-v1 OLIGO  EXPRESSION
-    35                          <NA>         HuGene-2_1-st-v1 OLIGO  EXPRESSION
-         vendor
-    1   PHALANX
-    2  CODELINK
-    3  ILLUMINA
-    4   AGILENT
-    5  ILLUMINA
-    6  ILLUMINA
-    7   AGILENT
-    8   AGILENT
-    9   AGILENT
-    10     AFFY
-    11  AGILENT
-    12     AFFY
-    13  AGILENT
-    14  AGILENT
-    15  AGILENT
-    16     AFFY
-    17  AGILENT
-    18 ILLUMINA
-    19     AFFY
-    20     AFFY
-    21     AFFY
-    22     AFFY
-    23     AFFY
-    24     AFFY
-    25     AFFY
-    26     AFFY
-    27     AFFY
-    28     AFFY
-    29     AFFY
-    30     AFFY
-    31     AFFY
-    32     AFFY
-    33     AFFY
-    34     AFFY
-    35     AFFY
+                         description      format   vendor  type
+    1                           <NA>  EXPRESSION  PHALANX OLIGO
+    2                           <NA>  EXPRESSION CODELINK OLIGO
+    3                           <NA>  EXPRESSION ILLUMINA OLIGO
+    4                           <NA>  EXPRESSION  AGILENT OLIGO
+    5                           <NA> METHYLATION ILLUMINA OLIGO
+    6                           <NA>  EXPRESSION ILLUMINA OLIGO
+    7                           <NA>  EXPRESSION  AGILENT OLIGO
+    8                           <NA>         CGH  AGILENT OLIGO
+    9                           <NA>  EXPRESSION  AGILENT OLIGO
+    10                          <NA>  EXPRESSION     AFFY OLIGO
+    11                          <NA>  EXPRESSION  AGILENT OLIGO
+    12                          <NA>  EXPRESSION     AFFY OLIGO
+    13                          <NA>  EXPRESSION  AGILENT OLIGO
+    14                          <NA>  EXPRESSION  AGILENT OLIGO
+    15                          <NA>  EXPRESSION  AGILENT OLIGO
+    16                          <NA>  EXPRESSION     AFFY OLIGO
+    17                          <NA>  EXPRESSION  AGILENT OLIGO
+    18                          <NA> METHYLATION ILLUMINA OLIGO
+    19                          <NA>  EXPRESSION     AFFY OLIGO
+    20 Human Transcriptome Array 2.0  EXPRESSION     AFFY OLIGO
+    21                          <NA>  EXPRESSION     AFFY OLIGO
+    22                          <NA>  EXPRESSION     AFFY OLIGO
+    23                          <NA>  EXPRESSION     AFFY OLIGO
+    24                          <NA>  EXPRESSION     AFFY OLIGO
+    25                          <NA>  EXPRESSION     AFFY OLIGO
+    26                          <NA>  EXPRESSION     AFFY OLIGO
+    27                          <NA>  EXPRESSION     AFFY OLIGO
+    28                          <NA>  EXPRESSION     AFFY OLIGO
+    29                          <NA>  EXPRESSION     AFFY OLIGO
+    30                          <NA>  EXPRESSION     AFFY OLIGO
+    31                          <NA>  EXPRESSION     AFFY OLIGO
+    32                          <NA>  EXPRESSION     AFFY OLIGO
+    33                          <NA>  EXPRESSION     AFFY OLIGO
+    34                          <NA>  EXPRESSION     AFFY OLIGO
+    35                          <NA>  EXPRESSION     AFFY OLIGO
+                          array
+    1                  OneArray
+    2                  CODELINK
+    3              HumanWG_6_V3
+    4                   GPL6848
+    5       HumanMethylation450
+    6             HumanRef-8_V3
+    7               WholeGenome
+    8                   CGH_44b
+    9     SurePrint_G3_GE_8x60k
+    10                  HC-G110
+    11 SurePrint_G3_GE_8x60k_v2
+    12                 HG-Focus
+    13     WholeGenome_4x44k_v1
+    14     WholeGenome_4x44k_v2
+    15                 GPL26966
+    16               HG-U133A_2
+    17                 GPL19072
+    18       HumanMethylation27
+    19                 HG-U133B
+    20                  HTA-2_0
+    21           HG-U133_Plus_2
+    22                HG_U95Av2
+    23                  HG-U95B
+    24                  HG-U95C
+    25                  HG-U95D
+    26                  HG-U95E
+    27                  HG_U95A
+    28                 HuGeneFL
+    29                 U133_X3P
+    30                PrimeView
+    31       HT_HG-U133_Plus_PM
+    32           HuEx-1_0-st-v2
+    33         HuGene-2_0-st-v1
+    34         HuGene-1_0-st-v1
+    35         HuGene-2_1-st-v1
 
 ## 2. Intermediate API in R
 
@@ -269,7 +269,7 @@ queries = list(format="json")
 get_microarrays(baseURL, endpoint, queries)
 ```
 
-    [1] "[{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"OneArray\",\"type\":\"OLIGO\",\"vendor\":\"PHALANX\"},{\"type\":\"OLIGO\",\"vendor\":\"CODELINK\",\"description\":null,\"array\":\"CODELINK\",\"format\":\"EXPRESSION\"},{\"description\":null,\"array\":\"HumanWG_6_V3\",\"format\":\"EXPRESSION\",\"vendor\":\"ILLUMINA\",\"type\":\"OLIGO\"},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"GPL6848\"},{\"description\":null,\"array\":\"HumanMethylation450\",\"format\":\"METHYLATION\",\"type\":\"OLIGO\",\"vendor\":\"ILLUMINA\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HumanRef-8_V3\",\"vendor\":\"ILLUMINA\",\"type\":\"OLIGO\"},{\"description\":null,\"array\":\"WholeGenome\",\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AGILENT\"},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"format\":\"CGH\",\"description\":null,\"array\":\"CGH_44b\"},{\"format\":\"EXPRESSION\",\"array\":\"SurePrint_G3_GE_8x60k\",\"description\":null,\"type\":\"OLIGO\",\"vendor\":\"AGILENT\"},{\"array\":\"HC-G110\",\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"SurePrint_G3_GE_8x60k_v2\"},{\"description\":null,\"array\":\"HG-Focus\",\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"format\":\"EXPRESSION\",\"array\":\"WholeGenome_4x44k_v1\",\"description\":null,\"vendor\":\"AGILENT\",\"type\":\"OLIGO\"},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"array\":\"WholeGenome_4x44k_v2\",\"description\":null},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"array\":\"GPL26966\",\"description\":null,\"format\":\"EXPRESSION\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HG-U133A_2\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"GPL19072\",\"vendor\":\"AGILENT\",\"type\":\"OLIGO\"},{\"type\":\"OLIGO\",\"vendor\":\"ILLUMINA\",\"description\":null,\"array\":\"HumanMethylation27\",\"format\":\"METHYLATION\"},{\"array\":\"HG-U133B\",\"description\":null,\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"format\":\"EXPRESSION\",\"description\":\"Human Transcriptome Array 2.0\",\"array\":\"HTA-2_0\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"description\":null,\"array\":\"HG-U133_Plus_2\",\"format\":\"EXPRESSION\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"format\":\"EXPRESSION\",\"array\":\"HG_U95Av2\",\"description\":null},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HG-U95B\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HG-U95C\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"array\":\"HG-U95D\",\"description\":null,\"format\":\"EXPRESSION\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"array\":\"HG-U95E\",\"description\":null,\"format\":\"EXPRESSION\"},{\"array\":\"HG_U95A\",\"description\":null,\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HuGeneFL\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"U133_X3P\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"PrimeView\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HT_HG-U133_Plus_PM\"},{\"array\":\"HuEx-1_0-st-v2\",\"description\":null,\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HuGene-2_0-st-v1\"},{\"description\":null,\"array\":\"HuGene-1_0-st-v1\",\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"description\":null,\"array\":\"HuGene-2_1-st-v1\",\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"}]"
+    [1] "[{\"vendor\":\"PHALANX\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"array\":\"OneArray\",\"description\":null},{\"array\":\"CODELINK\",\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"CODELINK\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HumanWG_6_V3\",\"vendor\":\"ILLUMINA\",\"type\":\"OLIGO\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"GPL6848\",\"type\":\"OLIGO\",\"vendor\":\"AGILENT\"},{\"vendor\":\"ILLUMINA\",\"type\":\"OLIGO\",\"format\":\"METHYLATION\",\"array\":\"HumanMethylation450\",\"description\":null},{\"description\":null,\"array\":\"HumanRef-8_V3\",\"format\":\"EXPRESSION\",\"vendor\":\"ILLUMINA\",\"type\":\"OLIGO\"},{\"type\":\"OLIGO\",\"vendor\":\"AGILENT\",\"format\":\"EXPRESSION\",\"array\":\"WholeGenome\",\"description\":null},{\"type\":\"OLIGO\",\"vendor\":\"AGILENT\",\"format\":\"CGH\",\"array\":\"CGH_44b\",\"description\":null},{\"description\":null,\"array\":\"SurePrint_G3_GE_8x60k\",\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AGILENT\"},{\"format\":\"EXPRESSION\",\"array\":\"HC-G110\",\"description\":null,\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"description\":null,\"array\":\"SurePrint_G3_GE_8x60k_v2\",\"format\":\"EXPRESSION\"},{\"description\":null,\"array\":\"HG-Focus\",\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"format\":\"EXPRESSION\",\"array\":\"WholeGenome_4x44k_v1\",\"description\":null,\"vendor\":\"AGILENT\",\"type\":\"OLIGO\"},{\"format\":\"EXPRESSION\",\"array\":\"WholeGenome_4x44k_v2\",\"description\":null,\"type\":\"OLIGO\",\"vendor\":\"AGILENT\"},{\"array\":\"GPL26966\",\"description\":null,\"format\":\"EXPRESSION\",\"vendor\":\"AGILENT\",\"type\":\"OLIGO\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HG-U133A_2\"},{\"array\":\"GPL19072\",\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AGILENT\"},{\"vendor\":\"ILLUMINA\",\"type\":\"OLIGO\",\"format\":\"METHYLATION\",\"array\":\"HumanMethylation27\",\"description\":null},{\"description\":null,\"array\":\"HG-U133B\",\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"array\":\"HTA-2_0\",\"description\":\"Human Transcriptome Array 2.0\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"description\":null,\"array\":\"HG-U133_Plus_2\",\"format\":\"EXPRESSION\"},{\"format\":\"EXPRESSION\",\"array\":\"HG_U95Av2\",\"description\":null,\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"array\":\"HG-U95B\",\"description\":null,\"format\":\"EXPRESSION\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"description\":null,\"array\":\"HG-U95C\",\"format\":\"EXPRESSION\"},{\"array\":\"HG-U95D\",\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"description\":null,\"array\":\"HG-U95E\",\"format\":\"EXPRESSION\"},{\"array\":\"HG_U95A\",\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"array\":\"HuGeneFL\",\"description\":null},{\"array\":\"U133_X3P\",\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"array\":\"PrimeView\",\"description\":null,\"format\":\"EXPRESSION\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HT_HG-U133_Plus_PM\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"description\":null,\"array\":\"HuEx-1_0-st-v2\",\"format\":\"EXPRESSION\"},{\"array\":\"HuGene-2_0-st-v1\",\"description\":null,\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"array\":\"HuGene-1_0-st-v1\",\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HuGene-2_1-st-v1\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"}]"
 
 ## 2.2 ChatGPT’s **API Authentification**
 
@@ -473,11 +473,11 @@ specify how it will be encoded.
 r <- POST(url, body = body, encode = "json")
 ```
 
-Let’s say you want to optimize your R code.
+Let’s say you want to optimize your R code. Newlines in the prompt
+confuse the API, so use `toJSON` to encode as `\n`.
 
 ``` r
-code = "i <- 10\nwhile (i > 0) {\n i <- i - 1\n print(i)\n}" 
-cat(code,"\n")
+code = toJSON("i <- 10 while (i > 0) { i <- i - 1 print(i)}")
 ```
 
 In the prompt you have to ask
@@ -487,23 +487,39 @@ prompt <- paste0('Optimize the following R code: "', code, '"')
 prompt
 ```
 
-You have to give the body of the POST request.
+You have to give the body of the POST request. For that we need to look
+at the information provided
+[here](https://platform.openai.com/docs/api-reference/making-requests).
 
 ``` r
 params <- list(
 model = "text-davinci-003", max_tokens = 256, temperature =0.7, top_p = 1, frequency_penalty = 0, presence_penalty = 0)
 ```
 
-Let’s run our POST request
+Let’s run our POST request. To automatically unbox all vectors of length
+1 within an object, use the `auto_unbox` argument in `toJSON().`
 
 ``` r
 r = content(POST( "https://api.openai.com/v1/completions", add_headers("Authorization" = paste('Bearer', key)), content_type_json(), body = toJSON(c(params, list(prompt = prompt)), auto_unbox = TRUE) ))
 cat(r$choices[[1]]$text,"\n")
 ```
 
+``` r
+r$choices[[1]]$text
+```
+
 ## Exercice
 
-Use the example above to do the same task as above using `httr2` .
+Complete the following code:
+
+``` r
+library(httr)
+myurl <- "https://api.openai.com/v1/engines/davinci/completions"
+seed_text <- "This is a test"
+tokens <- 5
+output <- ----(-----, body = ----(prompt = -----, max_tokens = -----), add_headers(Authorization = paste("Bearer", -----)), encode = "-----")
+content(------)$choices[[1]]$text
+```
 
 ### ChatGPT R packages
 
@@ -512,6 +528,8 @@ https://github.com/jcrodriguez1989/chatgpt
 https://jameshwade.github.io/gpttools/
 
 https://irudnyts.github.io/openai/
+
+### ChatGPT in
 
 ## References
 
@@ -522,4 +540,5 @@ https://observablehq.com/@periscopic/cozy-collecting-part-1
 https://observablehq.com/@periscopic/cozy-collecting-part-2
 
 https://observablehq.com/@periscopic/cozy-collecting-case-study
+
 
