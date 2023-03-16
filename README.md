@@ -1,136 +1,129 @@
+Intermediate API in R
+================
+Hedia Tnani
+
 # Intermediate API in R
 
 ## 1. Basic API in R
 
 Lat time we saw how to make a `GET` request to retrieve data from an
-API. We'll remember again the different steps. We'll also add query
+API. We’ll remember again the different steps. We’ll also add query
 parameters and authentication.
 
-Let's remember what we did last time using the Ensembl Rest API.
+Let’s remember what we did last time using the Ensembl Rest API.
 
 First we prepare the URL.
 
-::: cell
-``` {.r .cell-code}
+``` r
 library(httr) # accessing APIs
 # Preparing the URL 
 baseURL <- "https://rest.ensembl.org"
 ext <- "/regulatory/species/homo_sapiens/microarray?"
 URL <- modify_url(baseURL, path = ext)
 ```
-:::
 
 As we saw last time a **Uniform Resource Identifier (URI)** **resource**
 specifies which resource you want to access. A URI is a generalization
-of a URL (Uniform Resource Locator)---what you commonly think of as
-\"web addresses\".
+of a URL (Uniform Resource Locator)—what you commonly think of as "web
+addresses".
 
 Then we query the database.
 
-::: cell
-``` {.r .cell-code}
+``` r
 response = GET(URL)
 response
 ```
 
-::: {.cell-output .cell-output-stdout}
     Response [https://rest.ensembl.org/regulatory/species/homo_sapiens/microarray]
-      Date: 2023-03-16 14:39
+      Date: 2023-03-16 14:44
       Status: 200
       Content-Type: application/json
       Size: 3.46 kB
-:::
-:::
 
 Then we convert the JSON format to a dataframe by using the `fromJSON`
 function.
 
-::: cell
-``` {.r .cell-code}
+``` r
 library(jsonlite)
 fromJSON(content(response,as = "text", encoding = "UTF-8" ))
 ```
 
-::: {.cell-output .cell-output-stdout}
-                         description   vendor      format  type
-    1                           <NA>  PHALANX  EXPRESSION OLIGO
-    2                           <NA> CODELINK  EXPRESSION OLIGO
-    3                           <NA> ILLUMINA  EXPRESSION OLIGO
-    4                           <NA>  AGILENT  EXPRESSION OLIGO
-    5                           <NA> ILLUMINA METHYLATION OLIGO
-    6                           <NA> ILLUMINA  EXPRESSION OLIGO
-    7                           <NA>  AGILENT  EXPRESSION OLIGO
-    8                           <NA>  AGILENT         CGH OLIGO
-    9                           <NA>  AGILENT  EXPRESSION OLIGO
-    10                          <NA>     AFFY  EXPRESSION OLIGO
-    11                          <NA>  AGILENT  EXPRESSION OLIGO
-    12                          <NA>     AFFY  EXPRESSION OLIGO
-    13                          <NA>  AGILENT  EXPRESSION OLIGO
-    14                          <NA>  AGILENT  EXPRESSION OLIGO
-    15                          <NA>  AGILENT  EXPRESSION OLIGO
-    16                          <NA>     AFFY  EXPRESSION OLIGO
-    17                          <NA>  AGILENT  EXPRESSION OLIGO
-    18                          <NA> ILLUMINA METHYLATION OLIGO
-    19                          <NA>     AFFY  EXPRESSION OLIGO
-    20 Human Transcriptome Array 2.0     AFFY  EXPRESSION OLIGO
-    21                          <NA>     AFFY  EXPRESSION OLIGO
-    22                          <NA>     AFFY  EXPRESSION OLIGO
-    23                          <NA>     AFFY  EXPRESSION OLIGO
-    24                          <NA>     AFFY  EXPRESSION OLIGO
-    25                          <NA>     AFFY  EXPRESSION OLIGO
-    26                          <NA>     AFFY  EXPRESSION OLIGO
-    27                          <NA>     AFFY  EXPRESSION OLIGO
-    28                          <NA>     AFFY  EXPRESSION OLIGO
-    29                          <NA>     AFFY  EXPRESSION OLIGO
-    30                          <NA>     AFFY  EXPRESSION OLIGO
-    31                          <NA>     AFFY  EXPRESSION OLIGO
-    32                          <NA>     AFFY  EXPRESSION OLIGO
-    33                          <NA>     AFFY  EXPRESSION OLIGO
-    34                          <NA>     AFFY  EXPRESSION OLIGO
-    35                          <NA>     AFFY  EXPRESSION OLIGO
-                          array
-    1                  OneArray
-    2                  CODELINK
-    3              HumanWG_6_V3
-    4                   GPL6848
-    5       HumanMethylation450
-    6             HumanRef-8_V3
-    7               WholeGenome
-    8                   CGH_44b
-    9     SurePrint_G3_GE_8x60k
-    10                  HC-G110
-    11 SurePrint_G3_GE_8x60k_v2
-    12                 HG-Focus
-    13     WholeGenome_4x44k_v1
-    14     WholeGenome_4x44k_v2
-    15                 GPL26966
-    16               HG-U133A_2
-    17                 GPL19072
-    18       HumanMethylation27
-    19                 HG-U133B
-    20                  HTA-2_0
-    21           HG-U133_Plus_2
-    22                HG_U95Av2
-    23                  HG-U95B
-    24                  HG-U95C
-    25                  HG-U95D
-    26                  HG-U95E
-    27                  HG_U95A
-    28                 HuGeneFL
-    29                 U133_X3P
-    30                PrimeView
-    31       HT_HG-U133_Plus_PM
-    32           HuEx-1_0-st-v2
-    33         HuGene-2_0-st-v1
-    34         HuGene-1_0-st-v1
-    35         HuGene-2_1-st-v1
-:::
-:::
+        type      format                    array   vendor
+    1  OLIGO  EXPRESSION                 OneArray  PHALANX
+    2  OLIGO  EXPRESSION                 CODELINK CODELINK
+    3  OLIGO  EXPRESSION             HumanWG_6_V3 ILLUMINA
+    4  OLIGO  EXPRESSION                  GPL6848  AGILENT
+    5  OLIGO METHYLATION      HumanMethylation450 ILLUMINA
+    6  OLIGO  EXPRESSION            HumanRef-8_V3 ILLUMINA
+    7  OLIGO  EXPRESSION              WholeGenome  AGILENT
+    8  OLIGO         CGH                  CGH_44b  AGILENT
+    9  OLIGO  EXPRESSION    SurePrint_G3_GE_8x60k  AGILENT
+    10 OLIGO  EXPRESSION                  HC-G110     AFFY
+    11 OLIGO  EXPRESSION SurePrint_G3_GE_8x60k_v2  AGILENT
+    12 OLIGO  EXPRESSION                 HG-Focus     AFFY
+    13 OLIGO  EXPRESSION     WholeGenome_4x44k_v1  AGILENT
+    14 OLIGO  EXPRESSION     WholeGenome_4x44k_v2  AGILENT
+    15 OLIGO  EXPRESSION                 GPL26966  AGILENT
+    16 OLIGO  EXPRESSION               HG-U133A_2     AFFY
+    17 OLIGO  EXPRESSION                 GPL19072  AGILENT
+    18 OLIGO METHYLATION       HumanMethylation27 ILLUMINA
+    19 OLIGO  EXPRESSION                 HG-U133B     AFFY
+    20 OLIGO  EXPRESSION                  HTA-2_0     AFFY
+    21 OLIGO  EXPRESSION           HG-U133_Plus_2     AFFY
+    22 OLIGO  EXPRESSION                HG_U95Av2     AFFY
+    23 OLIGO  EXPRESSION                  HG-U95B     AFFY
+    24 OLIGO  EXPRESSION                  HG-U95C     AFFY
+    25 OLIGO  EXPRESSION                  HG-U95D     AFFY
+    26 OLIGO  EXPRESSION                  HG-U95E     AFFY
+    27 OLIGO  EXPRESSION                  HG_U95A     AFFY
+    28 OLIGO  EXPRESSION                 HuGeneFL     AFFY
+    29 OLIGO  EXPRESSION                 U133_X3P     AFFY
+    30 OLIGO  EXPRESSION                PrimeView     AFFY
+    31 OLIGO  EXPRESSION       HT_HG-U133_Plus_PM     AFFY
+    32 OLIGO  EXPRESSION           HuEx-1_0-st-v2     AFFY
+    33 OLIGO  EXPRESSION         HuGene-2_0-st-v1     AFFY
+    34 OLIGO  EXPRESSION         HuGene-1_0-st-v1     AFFY
+    35 OLIGO  EXPRESSION         HuGene-2_1-st-v1     AFFY
+                         description
+    1                           <NA>
+    2                           <NA>
+    3                           <NA>
+    4                           <NA>
+    5                           <NA>
+    6                           <NA>
+    7                           <NA>
+    8                           <NA>
+    9                           <NA>
+    10                          <NA>
+    11                          <NA>
+    12                          <NA>
+    13                          <NA>
+    14                          <NA>
+    15                          <NA>
+    16                          <NA>
+    17                          <NA>
+    18                          <NA>
+    19                          <NA>
+    20 Human Transcriptome Array 2.0
+    21                          <NA>
+    22                          <NA>
+    23                          <NA>
+    24                          <NA>
+    25                          <NA>
+    26                          <NA>
+    27                          <NA>
+    28                          <NA>
+    29                          <NA>
+    30                          <NA>
+    31                          <NA>
+    32                          <NA>
+    33                          <NA>
+    34                          <NA>
+    35                          <NA>
 
 Then we saw how to make a function.
 
-::: cell
-``` {.r .cell-code}
+``` r
 library(httr)
 library(jsonlite)
 
@@ -155,81 +148,78 @@ con <- "application/json"
 get_microarrays(baseURL, ext, con)
 ```
 
-::: {.cell-output .cell-output-stdout}
-                         description      format  type   vendor
-    1                           <NA>  EXPRESSION OLIGO  PHALANX
-    2                           <NA>  EXPRESSION OLIGO CODELINK
-    3                           <NA>  EXPRESSION OLIGO ILLUMINA
-    4                           <NA>  EXPRESSION OLIGO  AGILENT
-    5                           <NA> METHYLATION OLIGO ILLUMINA
-    6                           <NA>  EXPRESSION OLIGO ILLUMINA
-    7                           <NA>  EXPRESSION OLIGO  AGILENT
-    8                           <NA>         CGH OLIGO  AGILENT
-    9                           <NA>  EXPRESSION OLIGO  AGILENT
-    10                          <NA>  EXPRESSION OLIGO     AFFY
-    11                          <NA>  EXPRESSION OLIGO  AGILENT
-    12                          <NA>  EXPRESSION OLIGO     AFFY
-    13                          <NA>  EXPRESSION OLIGO  AGILENT
-    14                          <NA>  EXPRESSION OLIGO  AGILENT
-    15                          <NA>  EXPRESSION OLIGO  AGILENT
-    16                          <NA>  EXPRESSION OLIGO     AFFY
-    17                          <NA>  EXPRESSION OLIGO  AGILENT
-    18                          <NA> METHYLATION OLIGO ILLUMINA
-    19                          <NA>  EXPRESSION OLIGO     AFFY
-    20 Human Transcriptome Array 2.0  EXPRESSION OLIGO     AFFY
-    21                          <NA>  EXPRESSION OLIGO     AFFY
-    22                          <NA>  EXPRESSION OLIGO     AFFY
-    23                          <NA>  EXPRESSION OLIGO     AFFY
-    24                          <NA>  EXPRESSION OLIGO     AFFY
-    25                          <NA>  EXPRESSION OLIGO     AFFY
-    26                          <NA>  EXPRESSION OLIGO     AFFY
-    27                          <NA>  EXPRESSION OLIGO     AFFY
-    28                          <NA>  EXPRESSION OLIGO     AFFY
-    29                          <NA>  EXPRESSION OLIGO     AFFY
-    30                          <NA>  EXPRESSION OLIGO     AFFY
-    31                          <NA>  EXPRESSION OLIGO     AFFY
-    32                          <NA>  EXPRESSION OLIGO     AFFY
-    33                          <NA>  EXPRESSION OLIGO     AFFY
-    34                          <NA>  EXPRESSION OLIGO     AFFY
-    35                          <NA>  EXPRESSION OLIGO     AFFY
-                          array
-    1                  OneArray
-    2                  CODELINK
-    3              HumanWG_6_V3
-    4                   GPL6848
-    5       HumanMethylation450
-    6             HumanRef-8_V3
-    7               WholeGenome
-    8                   CGH_44b
-    9     SurePrint_G3_GE_8x60k
-    10                  HC-G110
-    11 SurePrint_G3_GE_8x60k_v2
-    12                 HG-Focus
-    13     WholeGenome_4x44k_v1
-    14     WholeGenome_4x44k_v2
-    15                 GPL26966
-    16               HG-U133A_2
-    17                 GPL19072
-    18       HumanMethylation27
-    19                 HG-U133B
-    20                  HTA-2_0
-    21           HG-U133_Plus_2
-    22                HG_U95Av2
-    23                  HG-U95B
-    24                  HG-U95C
-    25                  HG-U95D
-    26                  HG-U95E
-    27                  HG_U95A
-    28                 HuGeneFL
-    29                 U133_X3P
-    30                PrimeView
-    31       HT_HG-U133_Plus_PM
-    32           HuEx-1_0-st-v2
-    33         HuGene-2_0-st-v1
-    34         HuGene-1_0-st-v1
-    35         HuGene-2_1-st-v1
-:::
-:::
+                         description                    array  type      format
+    1                           <NA>                 OneArray OLIGO  EXPRESSION
+    2                           <NA>                 CODELINK OLIGO  EXPRESSION
+    3                           <NA>             HumanWG_6_V3 OLIGO  EXPRESSION
+    4                           <NA>                  GPL6848 OLIGO  EXPRESSION
+    5                           <NA>      HumanMethylation450 OLIGO METHYLATION
+    6                           <NA>            HumanRef-8_V3 OLIGO  EXPRESSION
+    7                           <NA>              WholeGenome OLIGO  EXPRESSION
+    8                           <NA>                  CGH_44b OLIGO         CGH
+    9                           <NA>    SurePrint_G3_GE_8x60k OLIGO  EXPRESSION
+    10                          <NA>                  HC-G110 OLIGO  EXPRESSION
+    11                          <NA> SurePrint_G3_GE_8x60k_v2 OLIGO  EXPRESSION
+    12                          <NA>                 HG-Focus OLIGO  EXPRESSION
+    13                          <NA>     WholeGenome_4x44k_v1 OLIGO  EXPRESSION
+    14                          <NA>     WholeGenome_4x44k_v2 OLIGO  EXPRESSION
+    15                          <NA>                 GPL26966 OLIGO  EXPRESSION
+    16                          <NA>               HG-U133A_2 OLIGO  EXPRESSION
+    17                          <NA>                 GPL19072 OLIGO  EXPRESSION
+    18                          <NA>       HumanMethylation27 OLIGO METHYLATION
+    19                          <NA>                 HG-U133B OLIGO  EXPRESSION
+    20 Human Transcriptome Array 2.0                  HTA-2_0 OLIGO  EXPRESSION
+    21                          <NA>           HG-U133_Plus_2 OLIGO  EXPRESSION
+    22                          <NA>                HG_U95Av2 OLIGO  EXPRESSION
+    23                          <NA>                  HG-U95B OLIGO  EXPRESSION
+    24                          <NA>                  HG-U95C OLIGO  EXPRESSION
+    25                          <NA>                  HG-U95D OLIGO  EXPRESSION
+    26                          <NA>                  HG-U95E OLIGO  EXPRESSION
+    27                          <NA>                  HG_U95A OLIGO  EXPRESSION
+    28                          <NA>                 HuGeneFL OLIGO  EXPRESSION
+    29                          <NA>                 U133_X3P OLIGO  EXPRESSION
+    30                          <NA>                PrimeView OLIGO  EXPRESSION
+    31                          <NA>       HT_HG-U133_Plus_PM OLIGO  EXPRESSION
+    32                          <NA>           HuEx-1_0-st-v2 OLIGO  EXPRESSION
+    33                          <NA>         HuGene-2_0-st-v1 OLIGO  EXPRESSION
+    34                          <NA>         HuGene-1_0-st-v1 OLIGO  EXPRESSION
+    35                          <NA>         HuGene-2_1-st-v1 OLIGO  EXPRESSION
+         vendor
+    1   PHALANX
+    2  CODELINK
+    3  ILLUMINA
+    4   AGILENT
+    5  ILLUMINA
+    6  ILLUMINA
+    7   AGILENT
+    8   AGILENT
+    9   AGILENT
+    10     AFFY
+    11  AGILENT
+    12     AFFY
+    13  AGILENT
+    14  AGILENT
+    15  AGILENT
+    16     AFFY
+    17  AGILENT
+    18 ILLUMINA
+    19     AFFY
+    20     AFFY
+    21     AFFY
+    22     AFFY
+    23     AFFY
+    24     AFFY
+    25     AFFY
+    26     AFFY
+    27     AFFY
+    28     AFFY
+    29     AFFY
+    30     AFFY
+    31     AFFY
+    32     AFFY
+    33     AFFY
+    34     AFFY
+    35     AFFY
 
 ## 2. Intermediate API in R
 
@@ -246,7 +236,7 @@ We can pass `query` parameters as a named list, where the names are the
 We can use the `query` parameter of the **`GET()` function** from the
 `httr` package to add the query parameters to our request.
 
-So let's edit the previous `get_microarrays()` function.
+So let’s edit the previous `get_microarrays()` function.
 
 -   Add a **new parameter** named `queries` to the function and assign
     `list()` to it to make it an optional parameter: `queries = list()`.
@@ -256,10 +246,9 @@ So let's edit the previous `get_microarrays()` function.
 -   Edit the `GET()` function to set its `query` parameter to our
     function parameter `queries`.
 
-Let's take again the same example using the Ensembl rest API.
+Let’s take again the same example using the Ensembl rest API.
 
-::: cell
-``` {.r .cell-code}
+``` r
 library(httr)
 library(jsonlite)
 
@@ -280,15 +269,12 @@ queries = list(format="json")
 get_microarrays(baseURL, endpoint, queries)
 ```
 
-::: {.cell-output .cell-output-stdout}
-    [1] "[{\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"PHALANX\",\"array\":\"OneArray\",\"description\":null},{\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"array\":\"CODELINK\",\"vendor\":\"CODELINK\",\"description\":null},{\"array\":\"HumanWG_6_V3\",\"vendor\":\"ILLUMINA\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null},{\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"array\":\"GPL6848\",\"vendor\":\"AGILENT\",\"description\":null},{\"type\":\"OLIGO\",\"format\":\"METHYLATION\",\"vendor\":\"ILLUMINA\",\"array\":\"HumanMethylation450\",\"description\":null},{\"description\":null,\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"vendor\":\"ILLUMINA\",\"array\":\"HumanRef-8_V3\"},{\"array\":\"WholeGenome\",\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null},{\"vendor\":\"AGILENT\",\"array\":\"CGH_44b\",\"format\":\"CGH\",\"type\":\"OLIGO\",\"description\":null},{\"description\":null,\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"vendor\":\"AGILENT\",\"array\":\"SurePrint_G3_GE_8x60k\"},{\"array\":\"HC-G110\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null},{\"array\":\"SurePrint_G3_GE_8x60k_v2\",\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null},{\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"array\":\"HG-Focus\",\"description\":null},{\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"array\":\"WholeGenome_4x44k_v1\",\"vendor\":\"AGILENT\",\"description\":null},{\"description\":null,\"array\":\"WholeGenome_4x44k_v2\",\"vendor\":\"AGILENT\",\"format\":\"EXPRESSION\",\"type\":\"OLIGO\"},{\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"array\":\"GPL26966\",\"vendor\":\"AGILENT\"},{\"vendor\":\"AFFY\",\"array\":\"HG-U133A_2\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null},{\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AGILENT\",\"array\":\"GPL19072\"},{\"type\":\"OLIGO\",\"format\":\"METHYLATION\",\"vendor\":\"ILLUMINA\",\"array\":\"HumanMethylation27\",\"description\":null},{\"description\":null,\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"array\":\"HG-U133B\",\"vendor\":\"AFFY\"},{\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"array\":\"HTA-2_0\",\"description\":\"Human Transcriptome Array 2.0\"},{\"description\":null,\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"array\":\"HG-U133_Plus_2\"},{\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"array\":\"HG_U95Av2\",\"vendor\":\"AFFY\"},{\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"array\":\"HG-U95B\",\"vendor\":\"AFFY\",\"description\":null},{\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"array\":\"HG-U95C\",\"description\":null},{\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"array\":\"HG-U95D\",\"vendor\":\"AFFY\",\"description\":null},{\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"array\":\"HG-U95E\",\"description\":null},{\"description\":null,\"vendor\":\"AFFY\",\"array\":\"HG_U95A\",\"format\":\"EXPRESSION\",\"type\":\"OLIGO\"},{\"description\":null,\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"array\":\"HuGeneFL\"},{\"description\":null,\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"array\":\"U133_X3P\",\"vendor\":\"AFFY\"},{\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"array\":\"PrimeView\",\"vendor\":\"AFFY\"},{\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"array\":\"HT_HG-U133_Plus_PM\",\"description\":null},{\"description\":null,\"array\":\"HuEx-1_0-st-v2\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\"},{\"description\":null,\"vendor\":\"AFFY\",\"array\":\"HuGene-2_0-st-v1\",\"format\":\"EXPRESSION\",\"type\":\"OLIGO\"},{\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"array\":\"HuGene-1_0-st-v1\",\"vendor\":\"AFFY\",\"description\":null},{\"description\":null,\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"array\":\"HuGene-2_1-st-v1\",\"vendor\":\"AFFY\"}]"
-:::
-:::
+    [1] "[{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"OneArray\",\"type\":\"OLIGO\",\"vendor\":\"PHALANX\"},{\"type\":\"OLIGO\",\"vendor\":\"CODELINK\",\"description\":null,\"array\":\"CODELINK\",\"format\":\"EXPRESSION\"},{\"description\":null,\"array\":\"HumanWG_6_V3\",\"format\":\"EXPRESSION\",\"vendor\":\"ILLUMINA\",\"type\":\"OLIGO\"},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"GPL6848\"},{\"description\":null,\"array\":\"HumanMethylation450\",\"format\":\"METHYLATION\",\"type\":\"OLIGO\",\"vendor\":\"ILLUMINA\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HumanRef-8_V3\",\"vendor\":\"ILLUMINA\",\"type\":\"OLIGO\"},{\"description\":null,\"array\":\"WholeGenome\",\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AGILENT\"},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"format\":\"CGH\",\"description\":null,\"array\":\"CGH_44b\"},{\"format\":\"EXPRESSION\",\"array\":\"SurePrint_G3_GE_8x60k\",\"description\":null,\"type\":\"OLIGO\",\"vendor\":\"AGILENT\"},{\"array\":\"HC-G110\",\"description\":null,\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"SurePrint_G3_GE_8x60k_v2\"},{\"description\":null,\"array\":\"HG-Focus\",\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"format\":\"EXPRESSION\",\"array\":\"WholeGenome_4x44k_v1\",\"description\":null,\"vendor\":\"AGILENT\",\"type\":\"OLIGO\"},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"array\":\"WholeGenome_4x44k_v2\",\"description\":null},{\"vendor\":\"AGILENT\",\"type\":\"OLIGO\",\"array\":\"GPL26966\",\"description\":null,\"format\":\"EXPRESSION\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HG-U133A_2\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"GPL19072\",\"vendor\":\"AGILENT\",\"type\":\"OLIGO\"},{\"type\":\"OLIGO\",\"vendor\":\"ILLUMINA\",\"description\":null,\"array\":\"HumanMethylation27\",\"format\":\"METHYLATION\"},{\"array\":\"HG-U133B\",\"description\":null,\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"format\":\"EXPRESSION\",\"description\":\"Human Transcriptome Array 2.0\",\"array\":\"HTA-2_0\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"description\":null,\"array\":\"HG-U133_Plus_2\",\"format\":\"EXPRESSION\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"format\":\"EXPRESSION\",\"array\":\"HG_U95Av2\",\"description\":null},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HG-U95B\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HG-U95C\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"array\":\"HG-U95D\",\"description\":null,\"format\":\"EXPRESSION\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"array\":\"HG-U95E\",\"description\":null,\"format\":\"EXPRESSION\"},{\"array\":\"HG_U95A\",\"description\":null,\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HuGeneFL\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"U133_X3P\"},{\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"PrimeView\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"vendor\":\"AFFY\",\"type\":\"OLIGO\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HT_HG-U133_Plus_PM\"},{\"array\":\"HuEx-1_0-st-v2\",\"description\":null,\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"},{\"type\":\"OLIGO\",\"vendor\":\"AFFY\",\"format\":\"EXPRESSION\",\"description\":null,\"array\":\"HuGene-2_0-st-v1\"},{\"description\":null,\"array\":\"HuGene-1_0-st-v1\",\"format\":\"EXPRESSION\",\"type\":\"OLIGO\",\"vendor\":\"AFFY\"},{\"description\":null,\"array\":\"HuGene-2_1-st-v1\",\"format\":\"EXPRESSION\",\"vendor\":\"AFFY\",\"type\":\"OLIGO\"}]"
 
-## 2.2 ChatGPT's **API Authentification**
+## 2.2 ChatGPT’s **API Authentification**
 
-To authenticate with the ChatGPT's API, we need to use an access token.
-An access token is a credential we can **generate** on the OpenAI's
+To authenticate with the ChatGPT’s API, we need to use an access token.
+An access token is a credential we can **generate** on the OpenAI’s
 website. The token is a string that the API can read and associate with
 our account.
 
@@ -298,7 +284,7 @@ Typically APIs use the following authentication types:
     password. We can use the `authenticate("username", "password")`
     function in the API requests to achieve this.
 
-**API key authentication**: requires an API "key" or "token." We can use
+**API key authentication**: requires an API “key” or “token.” We can use
 the `api_key = "key"` parameter request to achieve this.
 
 Access tokens can have scopes and specific permissions. Using
@@ -316,32 +302,33 @@ limiting**.
 To use OpenAI through API, you must create a free account and generate
 keys.
 
-1\. Sign up
-here [https://beta.openai.com/signup](https://beta.openai.com/signup){alt="https://beta.openai.com/signup"}.
-You can use your Google or Microsoft account to sign up if you don't
+1\. Sign up here <a href="https://beta.openai.com/signup"
+alt="https://beta.openai.com/signup">https://beta.openai.com/signup</a>.
+You can use your Google or Microsoft account to sign up if you don’t
 want to create using an email/password combination. You may need a valid
 mobile number to verify your account.
 
-\
+  
 2. Now, visit your OpenAI key
-page [https://beta.openai.com/account/api-keys](https://beta.openai.com/account/api-keys){alt="https://beta.openai.com/account/api-keys"} or
-click the menu item "View API keys"
+page <a href="https://beta.openai.com/account/api-keys"
+alt="https://beta.openai.com/account/api-keys">https://beta.openai.com/account/api-keys</a> or
+click the menu item “View API keys”
 
-![](images/OpenAI_1.png){width="400"}
+<img src="images/OpenAI_1.png" width="400" />
 
-3\. Create a new key by clicking on **Personal** and then "Create new
-secret key" button. See the image below for reference.
+3\. Create a new key by clicking on **Personal** and then “Create new
+secret key” button. See the image below for reference.
 
 ![](images/OpenAI_2.png)
 
 Et voila !!!
 
-OpenAI gives \$18 free credits which you can consume within the first 3
+OpenAI gives $18 free credits which you can consume within the first 3
 months.
 
 ### 2.2.2 Use OpenAI API Keys
 
-Here we'll explain the different ways that are usually used to set the
+Here we’ll explain the different ways that are usually used to set the
 API key up in RStudio :
 
 -   By default, API calls will look for `OPENAI_API_KEY` environment
@@ -349,50 +336,42 @@ API key up in RStudio :
     use the following command, where `"<APIKEY>"` should be replaced
     with your actual key:
 
-::: cell
-``` {.r .cell-code}
+``` r
 Sys.setenv(OPENAI_API_KEY = "<OPENAI_API_KEY>")
 ```
-:::
 
 -   Alternatively, you can set the key in your `.Renviron` file.
 
 The following commands will open .Renviron for editing:
 
-::: cell
-``` {.r .cell-code}
+``` r
 require(usethis)
 edit_r_environ()
 ```
-:::
 
 You can add the following line to the file (again, replace
 `<my_api_key>` with your actual key):
 
-::: cell
-``` {.r .cell-code}
+``` r
 OPENAI_API_KEY=<my_api_key>
 ```
-:::
 
-Make sure your '.Renviron' ends with a newline. Don\'t forget to save
-and restart R for this change to take effect. This now set the API key.
-This is a less secure approach.
+Make sure your ‘.Renviron’ ends with a newline. Don't forget to save and
+restart R for this change to take effect. This now set the API key. This
+is a less secure approach.
 
 -   Use a more secure approach by using `ask_pass` that if possible uses
     `askpass::askpass()` to interactively safely prompt you for the
     values
 
-    For that we'll be using this function.
+    For that we’ll be using this function.
 
-    ::: cell
-    ``` {.r .cell-code}
+    ``` r
     set_api_key <- function(key = NULL) { 
       if (is.null(key)) { 
         key <- askpass::askpass("Please enter your API key") } 
       Sys.setenv("OPENAI_KEY" = key) }
     ```
-    :::
 
 httr2 provides `secret_encrypt()` and `secret_decrypt()` to scramble
 secrets so that you can include them in your public source code without
@@ -410,65 +389,55 @@ process:
 
 ## Hands-on exercice using ChatGPT in R
 
-Let's apply what we've learned so far.
+Let’s apply what we’ve learned so far.
 
-Let's set up our token.
+Let’s set up our token.
 
-First let's run the `set_api_key( )`
+First let’s run the `set_api_key( )`
 
-::: cell
-``` {.r .cell-code}
+``` r
 set_api_key <- function(key = NULL) { 
   if (is.null(key)) { 
     key <- askpass::askpass("Please enter your OpenAI API key") } 
   Sys.setenv("OPENAI_KEY" = key) }
 ```
-:::
 
-**`Sys.setenv`** sets environment variables. Then let's call the
+**`Sys.setenv`** sets environment variables. Then let’s call the
 function.
 
-::: cell
-``` {.r .cell-code}
+``` r
 set_api_key()
 ```
-:::
 
-You'll get a prompt asking for the token. For that, go to OpenAI and
-click on "Create new secret key".
+You’ll get a prompt asking for the token. For that, go to OpenAI and
+click on “Create new secret key”.
 
 ![](images/OpenAI_3.png)
 
 Copy the API key and paste it in the prompt.
 
-::: cell
-``` {.r .cell-code}
+``` r
 key <- Sys.getenv("OPENAI_KEY")
 is.null(key)
 ```
-:::
 
 We can pass our token to the OpenAI API through the query parameter
 `api_key`, just like we did before.
 
-::: cell
-``` {.r .cell-code}
+``` r
  library(httr) 
  key <- Sys.getenv("OPENAI_KEY") 
  headers = c( `Authorization` = paste('Bearer', key), `Content-Type` = 'application/json' ) 
 res <- httr::GET(url = 'https://api.openai.com/v1/models/text-davinci-003', httr::add_headers(.headers=headers)) 
  res
 ```
-:::
 
 As we saw last time the status code is a three digit number that
 summarises whether or not the request was successful.
 
-::: cell
-``` {.r .cell-code}
+``` r
 http_status(res)
 ```
-:::
 
 `GPT-3.5` models can understand and generate natural language or code.
 `text-davinci-003` is Can do any language task with better quality,
@@ -481,68 +450,56 @@ You can change the model. The most capable and cost effective model in
 the GPT-3.5 family is **`gpt-3.5-turbo`** which has been optimized for
 chat but works well for traditional completions tasks as well.
 
-::: cell
-``` {.r .cell-code}
+``` r
 library(httr) 
  key <- Sys.getenv("OPENAI_KEY") 
  headers = c( `Authorization` = paste('Bearer', key), `Content-Type` = 'application/json' ) 
 res <- httr::GET(url = 'https://api.openai.com/v1/models/gpt-3.5-turbo', httr::add_headers(.headers=headers)) 
  res
 ```
-:::
 
 ### POST requests
 
 We use `POST` requests to send information (instead of retrieving it)
-and create objects on the API's server.
+and create objects on the API’s server.
 
 When `POST()`ing, you can include data in the `body` of the request.
 `httr` allows you to supply this in a number of different ways. The most
 common way is a named list. If the body is a named list you should
 specify how it will be encoded.
 
-::: cell
-``` {.r .cell-code}
+``` r
 # JSON encoded
 r <- POST(url, body = body, encode = "json")
 ```
-:::
 
-Let's say you want to optimize your R code.
+Let’s say you want to optimize your R code.
 
-::: cell
-``` {.r .cell-code}
+``` r
 code = "i <- 10\nwhile (i > 0) {\n i <- i - 1\n print(i)\n}" 
 cat(code,"\n")
 ```
-:::
 
 In the prompt you have to ask
 
-::: cell
-``` {.r .cell-code}
+``` r
 prompt <- paste0('Optimize the following R code: "', code, '"') 
 prompt
 ```
-:::
 
 You have to give the body of the POST request.
 
-::: cell
-``` {.r .cell-code}
+``` r
 params <- list(
 model = "text-davinci-003", max_tokens = 256, temperature =0.7, top_p = 1, frequency_penalty = 0, presence_penalty = 0)
 ```
-:::
 
-Let's run our POST request
+Let’s run our POST request
 
-::: cell
-``` {.r .cell-code}
+``` r
 r = content(POST( "https://api.openai.com/v1/completions", add_headers("Authorization" = paste('Bearer', key)), content_type_json(), body = toJSON(c(params, list(prompt = prompt)), auto_unbox = TRUE) ))
 cat(r$choices[[1]]$text,"\n")
 ```
-:::
 
 ## Exercice
 
@@ -565,3 +522,4 @@ https://observablehq.com/@periscopic/cozy-collecting-part-1
 https://observablehq.com/@periscopic/cozy-collecting-part-2
 
 https://observablehq.com/@periscopic/cozy-collecting-case-study
+
