@@ -529,7 +529,9 @@ https://jameshwade.github.io/gpttools/
 
 https://irudnyts.github.io/openai/
 
-### ChatGPT in
+### ChatGPT in Python
+
+https://medium.com/geekculture/hands-on-experience-with-chatgpt-api-in-python-db56c0c38a05
 
 ## References
 
